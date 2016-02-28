@@ -66,19 +66,24 @@ app.post('/register', function(req, res) {
   }
 
   res.status(201).json({
-    "game_type": state.game_type,
-    "game_id": state.game_id,
-    "team": (state.lastTeam++ % (state.teams))+1,
-    "user_id": uuid.v4(),
-    "start_in": state.start_in,
-    "duration": state.duration,
-    "progress": state.progress
+    game_type: state.game_type,
+    game_id: state.game_id,
+    team: (state.lastTeam++ % (state.teams))+1,
+    user_id: uuid.v4(),
+    start_in: state.start_in,
+    duration: state.duration,
+    progress: state.progress
   });
 });
 
 app.get('/leaderboard', function(req, res) {
 
-  res.status(201).json(state.leaderboard);
+  res.status(201).json({
+    leaderboard: state.leaderboard,
+    start_in: state.start_in,
+    duration: state.duration,
+    progress: state.progress
+  });
 });
 
 app.post('/points', function(req, res) {
