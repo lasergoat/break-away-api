@@ -61,7 +61,7 @@ app.post('/reset/' + secret, function(req, res) {
 app.post('/register', function(req, res) {
 
   if (state.progress >= state.duration) {
-    res.status(404).json({error: "game has ended"});
+    res.status(400).json({error: "game has ended"});
     return;
   }
 
@@ -83,12 +83,12 @@ app.get('/leaderboard', function(req, res) {
 app.post('/points', function(req, res) {
 
   if (state.start_in > 0) {
-    res.status(404).json({error: "game hasn't started"});
+    res.status(400).json({error: "game hasn't started"});
     return;
   }
 
   if (state.progress >= state.duration) {
-    res.status(404).json({error: "game has ended"});
+    res.status(400).json({error: "game has ended"});
     return;
   }
 
@@ -98,7 +98,7 @@ app.post('/points', function(req, res) {
   }
 
   if (typeof req.body.points !== "number") {
-    res.status(404).json({error: "invalid points"});
+    res.status(409).json({error: "invalid points"});
     return;
   }
 
