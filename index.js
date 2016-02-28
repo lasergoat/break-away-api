@@ -50,6 +50,7 @@ app.post('/reset/' + secret, function(req, res) {
 app.post('/register', function(req, res) {
 
   res.status(201).json({
+    "game_type": state.game_type,
     "game_id": state.game_id,
     "team": (state.lastTeam++ % (state.teams))+1,
     "user_id": uuid.v4()
