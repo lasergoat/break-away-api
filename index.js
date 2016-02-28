@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var uuid = require('node-uuid');
 var bodyParser = require('body-parser');
+var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 
@@ -76,4 +77,8 @@ app.post('/points', function(req, res) {
 });
 
 resetState();
-app.listen( 5477 );
+
+app.listen( port, function() {
+  console.log('listening on port: ' + port);
+  console.log(state);
+});
