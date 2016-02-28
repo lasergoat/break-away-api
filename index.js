@@ -71,7 +71,8 @@ app.post('/register', function(req, res) {
     "team": (state.lastTeam++ % (state.teams))+1,
     "user_id": uuid.v4(),
     "start_in": state.start_in,
-    "duration": state.duration
+    "duration": state.duration,
+    "progress": state.progress
   });
 });
 
