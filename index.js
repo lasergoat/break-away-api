@@ -3,7 +3,9 @@ var app = express();
 var uuid = require('node-uuid');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
+var cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json());
 
 const secret = 'THISISTHEPASSWORD';
@@ -22,7 +24,7 @@ var resetState = function() {
       4 : 0,
     },
     game_id: uuid.v4(),
-    game_type: 'hockey'
+    game_type: 'basketball'
   };
 };
 
